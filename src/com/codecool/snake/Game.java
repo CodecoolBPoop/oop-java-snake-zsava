@@ -1,16 +1,23 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import jdk.nashorn.internal.objects.Global;
 
 public class Game extends Pane {
 
     public Game() {
+        init();
+    }
+
+    public void init(){
         new SnakeHead(this, 500, 500);
 
         new SimpleEnemy(this);
@@ -44,6 +51,17 @@ public class Game extends Pane {
 
     }
 
+    public void restart(){
+        for (Node child: getChildren()){
+            if(child instanceof GameEntity){
+                Globals.removeGameObject((GameEntity)child);
+            }
+        }
+        getChildren().clear();
+        init();
+        this.createButtons();
+    }
+
     public void setTableBackground(Image tableBackground) {
         setBackground(new Background(new BackgroundImage(tableBackground,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
@@ -51,14 +69,15 @@ public class Game extends Pane {
 
     }
 
-    public void createButtons(Game game) {
+    public void createButtons() {
         Button newGameButton = new Button("New Game");
-        game.getChildren().add(newGameButton);
+        this.getChildren().add(newGameButton);
         newGameButton.setLayoutX(10);
         newGameButton.setLayoutY(10);
 
         newGameButton.setOnAction((event) -> {
-            game.start();
+            System.out.println("Restart");
+            this.restart();
         });
 
     }
