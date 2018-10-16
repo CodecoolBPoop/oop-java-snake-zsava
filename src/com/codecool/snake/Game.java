@@ -5,6 +5,7 @@ import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.layout.GridPane;
@@ -44,6 +45,7 @@ public class Game extends Pane {
         });
         Globals.gameLoop = new GameLoop();
         Globals.gameLoop.start();
+
     }
 
     public void setTableBackground(Image tableBackground) {
@@ -52,4 +54,17 @@ public class Game extends Pane {
                 BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 
     }
+
+    public void createButtons(Game game) {
+        Button newGameButton = new Button("New Game");
+        game.getChildren().add(newGameButton);
+        newGameButton.setLayoutX(10);
+        newGameButton.setLayoutY(10);
+
+        newGameButton.setOnAction((event) -> {
+            game.start();
+        });
+
+    }
+
 }
