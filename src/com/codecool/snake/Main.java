@@ -25,7 +25,7 @@ public class Main extends Application {
         gridPane.setPrefSize(400, 200);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.add(gameOver, 0, 0);
-        gridPane.setVisible(true);
+        gridPane.setVisible(false);
         gameOver.setStyle("-fx-font: normal bold 20px 'serif' ");
         gridPane.setStyle("-fx-background-color: BEIGE;");
         game.getChildren().add(gridPane);
