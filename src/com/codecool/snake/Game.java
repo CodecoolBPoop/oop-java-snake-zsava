@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import jdk.nashorn.internal.objects.Global;
 
+import java.util.concurrent.TimeUnit;
+
 public class Game extends Pane {
 
     public Game() {
@@ -59,7 +61,9 @@ public class Game extends Pane {
         }
         getChildren().clear();
         init();
-        this.createButtons();
+        Globals.gameLoop.startTime = System.nanoTime()/10000000;
+        Globals.gameLoop.start();
+        createButtons();
     }
 
     public void setTableBackground(Image tableBackground) {
@@ -77,7 +81,7 @@ public class Game extends Pane {
 
         newGameButton.setOnAction((event) -> {
             System.out.println("Restart");
-            this.restart();
+            restart();
         });
 
     }

@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.GameLoop;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -53,9 +54,13 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
 
         // check for game over condition
-        if (isOutOfBounds() || health <= 0) {
-            System.out.println("Game Over");
-            Globals.gameLoop.stop();
+        long endTime = System.nanoTime()/10000000;
+        long finaltime = endTime- Globals.gameLoop.startTime;
+        if (finaltime > 10) {
+            if (isOutOfBounds() || health <= 0) {
+                System.out.println("Game Over");
+                Globals.gameLoop.stop();
+            }
         }
     }
 
