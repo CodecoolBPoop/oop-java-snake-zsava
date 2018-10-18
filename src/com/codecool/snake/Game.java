@@ -75,7 +75,7 @@ public class Game extends Pane {
     public void alertMessage(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(null);
-        alert.setHeaderText("The snake long is: " + Globals.snakeLong);
+        alert.setHeaderText("The length of your snake is: " + Globals.snakeLong);
         alert.setContentText("Do you want to restart?");
         ButtonType buttonTypeOne = new ButtonType("Yes");
         ButtonType buttonTypeTwo = new ButtonType("Exit");
