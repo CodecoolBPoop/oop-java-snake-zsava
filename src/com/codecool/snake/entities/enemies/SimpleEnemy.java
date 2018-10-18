@@ -8,6 +8,7 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
+import jdk.nashorn.internal.objects.Global;
 
 import java.util.Random;
 
@@ -16,18 +17,28 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     private Point2D heading;
     private static final int damage = 10;
-
+    private Random rnd = new Random();
     public SimpleEnemy(Pane pane) {
         super(pane);
-
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
         int speed = 1;
-        Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
+        if(Globals.getGameObjects().isEmpty()){
+            System.out.println(rnd.nextDouble());
+            setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+            setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        }
+        else{
+            while(getX() == Globals.getGameObjects().get(0).getX() || getY() == Globals.getGameObjects().get(0).getY()){
+                setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+                setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+            }
+            setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+            setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+
+        }
         heading = Utils.directionToVector(direction, speed);
     }
 
