@@ -3,6 +3,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.enemies.Enemy2;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.Powerup2;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import javafx.animation.AnimationTimer;
 
@@ -23,6 +24,7 @@ public class GameLoop extends AnimationTimer {
                 animObject.step();
             }
         }
+        powerup2spawn();
         enemyspawn();
         enemy2spawn();
         powerupspawn();
@@ -50,7 +52,12 @@ public class GameLoop extends AnimationTimer {
         if(rand.nextInt(1000)<5){
             Globals.addGameObject(new SimplePowerup(Globals.game));
         }
+    }
 
-
+    private void powerup2spawn(){
+        Random rand = new Random();
+        if(rand.nextInt(1000)<5 ){
+            Globals.addGameObject(new Powerup2(Globals.game));
+        }
     }
 }

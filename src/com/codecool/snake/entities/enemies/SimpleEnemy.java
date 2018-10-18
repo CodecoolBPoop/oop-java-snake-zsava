@@ -25,6 +25,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         int speed = 1;
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
+
         if(Globals.getGameObjects().isEmpty()){
             System.out.println(rnd.nextDouble());
             setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
@@ -39,6 +40,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
             setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
         }
+
         heading = Utils.directionToVector(direction, speed);
     }
 
