@@ -65,6 +65,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void addPart(int numParts) {
+        Globals.snakeLong += numParts;
         for (int i = 0; i < numParts; i++) {
             SnakeBody newPart = new SnakeBody(pane, tail);
             tail = newPart;

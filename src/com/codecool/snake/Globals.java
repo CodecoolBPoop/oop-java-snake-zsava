@@ -19,6 +19,8 @@ public class Globals {
     //.. put here the other images you want to use
     public static Image powerupPill = new Image("powerup_pill.png");
 
+    public static int snakeLong;
+
     public static boolean leftKeyDown;
     public static boolean rightKeyDown;
     public static List<GameEntity> gameObjects;
