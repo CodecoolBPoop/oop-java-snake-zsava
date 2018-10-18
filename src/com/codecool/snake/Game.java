@@ -4,18 +4,14 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.application.Platform;
 import javafx.scene.Node;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import jdk.nashorn.internal.objects.Global;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-
-import java.util.concurrent.TimeUnit;
 
 public class Game extends Pane {
 
@@ -67,7 +63,6 @@ public class Game extends Pane {
         init();
         Globals.gameLoop.startTime = System.nanoTime()/10000000;
         Globals.gameLoop.start();
-        createButtons();
     }
 
     public void setTableBackground(Image tableBackground) {
@@ -77,17 +72,22 @@ public class Game extends Pane {
 
     }
 
-    public void createButtons() {
-        Button newGameButton = new Button("New Game");
-        this.getChildren().add(newGameButton);
-        newGameButton.setLayoutX(10);
-        newGameButton.setLayoutY(10);
-
-        newGameButton.setOnAction((event) -> {
-            System.out.println("Restart");
-            restart();
+    public void alertMessage(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(null);
+        alert.setHeaderText(null);
+        alert.setContentText("Do you want to restart?");
+        ButtonType buttonTypeOne = new ButtonType("Yes");
+        ButtonType buttonTypeTwo = new ButtonType("Exit");
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        alert.setOnHidden(e -> {
+            if (alert.getResult() == buttonTypeOne) {
+                restart();
+            } else if (alert.getResult() == buttonTypeTwo) {
+                Platform.exit();
+            }
         });
-
+        alert.show();
     }
 
 }
