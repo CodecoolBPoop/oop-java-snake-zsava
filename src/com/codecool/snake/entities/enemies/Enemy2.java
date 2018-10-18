@@ -15,14 +15,14 @@ import java.util.Random;
 public class Enemy2 extends GameEntity implements Animatable, Interactable {
     private double direction;
     private Point2D heading;
-    private static final int damage = 10;
+    private static final int damage = 20;
     private Random rnd = new Random();
     private int speed = 1;
 
     public Enemy2(Pane pane) {
         super(pane);
 
-        setImage(Globals.simpleEnemy);
+        setImage(Globals.Enemy2);
         pane.getChildren().add(this);
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
@@ -53,6 +53,6 @@ public class Enemy2 extends GameEntity implements Animatable, Interactable {
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "20 damage";
     }
 }

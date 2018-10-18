@@ -40,7 +40,7 @@ public class GameLoop extends AnimationTimer {
     }
 
     private void enemy2spawn(){
-        if(rand.nextInt(10000)<20){
+        if(rand.nextInt(10000)<40){
             Globals.addGameObject(new Enemy2(Globals.game));
         }
     }
