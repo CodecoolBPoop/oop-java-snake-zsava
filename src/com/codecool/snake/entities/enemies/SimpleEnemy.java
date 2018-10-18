@@ -27,17 +27,16 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         setRotate(direction);
 
         if(Globals.getGameObjects().isEmpty()){
-            System.out.println(rnd.nextDouble());
             setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
             setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
         }
         else{
             while(getX() == Globals.getGameObjects().get(0).getX() || getY() == Globals.getGameObjects().get(0).getY()){
-                setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-                setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+                setX(rnd.nextDouble() * Globals.WINDOW_WIDTH + 50);
+                setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT + 50);
             }
-            setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-            setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+            setX(rnd.nextDouble() * Globals.WINDOW_WIDTH + 50);
+            setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT + 50);
 
         }
 
