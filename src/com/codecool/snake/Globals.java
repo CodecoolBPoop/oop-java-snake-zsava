@@ -19,6 +19,7 @@ public class Globals {
     public static Image powerupBerry = new Image("powerup_berry.png");
     //.. put here the other images you want to use
     public static Image powerupPill = new Image("powerup_pill.png");
+    public static Image Powerup2 = new Image("powerup_syringe.png");
 
     public static int snakeLong;
 
